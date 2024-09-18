@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        margin: 0 0;
+        padding: 0 0;
+    }
+    .top{
+        height: 80px;
+        background-image: url('./image/top.jpg');
+        background-size: 100% auto;
+        position: relative;
+    }
+    .logo{
+        height: 50px;
+        position: absolute;
+        left: 50px;
+        top: 15px;
+    }
+    .content{
+        
+        height: 500px;
+    }
+    .content-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+    }
+    .left {
+        /* flex: 1; */
+    }
+    .main {
+        /* flex: 1; */
+        width: 700px;
+        padding-left: 20px;
+        line-height: 50px;
+    }
+    .left-image{
+        height: 220px;
+        width: 400px;
+    }
+    .main-title{
+        font-size: 22px;
+    }
+    .main-value{
+        color: red;
+    }
+    .main-content{
+        line-height: 30px;
+        font-size: 16px;
+        color: #666;
+    }
+</style>
+<body>
+    <div>
+        <div class="top">
+            <img class="logo" src="./image/logo.png" alt="">
+        </div>
+        <div class="content">
+            <div class="content-wrapper">
+                <div class="left">
+                    <img class="left-image" src="./image/1.jpg" alt="">
+                </div>
+                <div class="main">
+                    <div class="main-title">为了明天 关爱儿童”项目</div>
+                    <div>
+                        已筹金额：<span class="main-value"> ￥7365074.58元  </span>  
+                    </div>
+                    <div class="main-content">
+                        与各级慈善会搭建起合作平台，立足于本地区，动员当地企业、社会组织、志愿者等各方面资源，
+                        共同解决所在地区留守儿童的有关问题。项目通过设立“关爱儿童之家”平台，为留守儿童提供一个
+                        有“家”的感觉与氛围的地方，提供心灵关怀、亲情连线及素质培养等
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+</body>
+</html>
