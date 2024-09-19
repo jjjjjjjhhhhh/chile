@@ -94,6 +94,36 @@
         padding-top: 20px;
         padding-right: 50px;
     }
+    .content1{
+        /* width: 1200px; */
+        /* background-color: #70777d; */
+        color:#666;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+    }
+    .text{
+        width: 1200px;
+    }
+
+
+    .content2{
+        /* width: 1200px; */
+        /* background-color: #70777d; */
+        color:#666;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+    }
+    .text1{
+        width: 1200px;
+        border-bottom: 1px solid #666;
+
+    }
 </style>
 <body>
     <div>
@@ -105,6 +135,17 @@
         </div>
         <div class="content">
  
+        </div>
+        <div class="content2">
+            <div class="text1">
+                介绍
+            </div>
+        </div>
+        <div class="content1">
+    
+            <div class="text">
+
+            </div>
         </div>
     </div>
 </body>
@@ -148,6 +189,8 @@ function changeButton() {
 }
 function addContentData(data) {
         let content = document.querySelector('.content');
+        let center1 = document.querySelector('.text')
+
         let str = ''
         data.forEach(item => {
             str += `<div class="content-wrapper" >
@@ -175,10 +218,10 @@ function addContentData(data) {
                     </div>
                     <button onclick=changeButton()>捐献</button>
                 </div>
-
- 
                 </div>
-            </div>`
+            </div>
+            `
+            center1.textContent = item.VALUE
         })
         content.innerHTML = str
     }

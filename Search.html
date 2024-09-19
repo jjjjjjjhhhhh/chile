@@ -24,7 +24,7 @@
     }
     .content{
         /* width: 300px; */
-        height: 500px;
+        height: 300px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -80,6 +80,12 @@
   .content-form{
     width: 300px;
   }
+  .content-value{
+    height: 500px;
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+  }
 </style>
 <body>
     <div>
@@ -88,26 +94,101 @@
         </div>
         <div class="content">
             <div class="content-form">
-                <form action="/search" method="get">
-                    <label for="name">标题：<input type="search" name="q" placeholder="输入名称..."></label>
-                    <label for="name">城市：<input type="search" name="q" placeholder="输入城市名称..."></label>
-                    <label for="name">状态：
+                <form onsubmit="handleSearch(this)">
+                    <label for="name">标题：<input type="search" name="name" placeholder="输入名称..."></label>
+                    <label for="city">城市：<input type="search" name="city" placeholder="输入城市名称..."></label>
+                    <label for="status">状态：
                     
-                    <input type="radio" name="gender" >进行中
-                    <input type="radio" name="gender" checked>已完成</label>
+                    <input type="radio" name="gender" value="1">进行中
+                    <input type="radio" name="gender" value="2">已完成</label>
     
                     <input type="submit" value="搜索">
+                    <input type="reset" value="Clear">
                 </form>
             </div>
-     
+        </div>
+        <div class="content-value">
+            
         </div>
     </div>
 </body>
 
-<script>
-    function goSearch() {
-        
+<script type="text/javascript">
+    let url = 'http://192.168.1.151:5500/api/'
+
+
+    function handleSearch(form) {
+        event.preventDefault();        
+        let name = form.name.value;
+        let city = form.city.value;
+
+        const selectedRadio = document.querySelector('input[name="gender"]:checked')
+    
+        if (name === null && city === null && selectedRadio === null) {
+            return alert('Select at least one condition!!!')
+        }
+        let params = {
+            type: selectedRadio ? selectedRadio.value : '',
+            CAPTION: name ? name : '',
+            CITY: city ? city : ''
+        }
+        getSearch(params)
     }
+
+    function getSearch(params) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET',url + `getTypeData?type=${params.type}&CAPTION=${params.CAPTION}&CITY=${params.CITY}`, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send();
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                let data = JSON.parse(xhr.responseText);
+                console.log(data)
+                addContentData(data.data)
+            } else {
+                console.error('请求失败');
+            }
+        };
+}
+function changeWraaper(id){
+        window.location.href = `./Detail.html?id=${id}`
+}
+
+function addContentData(data) {
+    let content = document.querySelector('.content-value');
+    let str = ''
+    if (data.length === 0) {
+        str = '<div style="color: red">notFind Fundraising Activities</div>'
+        content.innerHTML = str
+    } else{
+        data.forEach(item => {
+            str += `<div class="content-wrapper" >
+                <div class="left" onclick=changeWraaper(${item.FUNDRAISER_ID})>
+                    <img class="left-image" src="${item.IMG}" alt="">
+                </div>
+                <div class="main">
+                    <div class="main-title" onclick=changeWraaper(${item.FUNDRAISER_ID})>${item.CAPTION}</div>
+                    <div class="main-amount">
+                        <div class="main-amount-flex">
+                            筹集金额：<span class="main-value">￥${item.TARGET_FUNDING}元</span>
+                        </div>
+                        <div class="main-amount-flex">
+                            已筹金额：<span class="main-value"> ￥${item.CURRENT_FUNDING}元  </span>  
+                        </div>
+                    </div>
+                    <div>
+                        ${item.ACTIVE_CATEGORY_ID == 1? '进行中' : item.ACTIVE_CATEGORY_ID == 2? '已结束' : item.ACTIVE_CATEGORY_ID == 3? '已下架' : '未开始'}
+
+                    </div>
+                    <div class="main-content">
+                    ${item.VALUE}
+                    </div>
+                </div>
+            </div>`
+        })
+        content.innerHTML = str
+    }
+}
 </script>
 
 
