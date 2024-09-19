@@ -56,11 +56,28 @@
         font-size: 16px;
         color: #666;
     }
+    .main-amount{
+        display: flex;
+    }
+    .main-amount-flex{
+        flex: 1;
+    }
+    #Search{
+        float: right;
+        padding-top: 20px;
+        padding-right: 50px;
+    }
 </style>
+
+
+
 <body>
     <div>
         <div class="top">
             <img class="logo" src="./image/logo.png" alt="">
+            <div id="Search" >
+                搜索
+            </div>
         </div>
         <div class="content">
             <div class="content-wrapper">
@@ -69,8 +86,16 @@
                 </div>
                 <div class="main">
                     <div class="main-title">为了明天 关爱儿童”项目</div>
+                    <div class="main-amount">
+                        <div class="main-amount-flex">
+                            筹集金额：<span class="main-value">￥10065074.58元</span>
+                        </div>
+                        <div class="main-amount-flex">
+                            已筹金额：<span class="main-value"> ￥7365074.58元  </span>  
+                        </div>
+                    </div>
                     <div>
-                        已筹金额：<span class="main-value"> ￥7365074.58元  </span>  
+                        进行中
                     </div>
                     <div class="main-content">
                         与各级慈善会搭建起合作平台，立足于本地区，动员当地企业、社会组织、志愿者等各方面资源，
@@ -79,8 +104,20 @@
                     </div>
                 </div>
             </div>
-    
         </div>
     </div>
 </body>
+
+<script type="text/javascript">
+    // function goSearch() {
+    //     console.log('123');
+    //     
+    // }
+    let search = document.getElementById('Search')
+    search.onclick = function(){
+       window.location.href = './Search.html'
+    }
+</script>
+
+
 </html>

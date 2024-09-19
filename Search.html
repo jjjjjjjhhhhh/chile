@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        margin: 0 0;
+        padding: 0 0;
+    }
+    .top{
+        height: 80px;
+        background-image: url('./image/top.jpg');
+        background-size: 100% auto;
+        position: relative;
+    }
+    .logo{
+        height: 50px;
+        position: absolute;
+        left: 50px;
+        top: 15px;
+    }
+    .content{
+        /* width: 300px; */
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .content-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+    }
+    .left {
+        /* flex: 1; */
+    }
+    .main {
+        /* flex: 1; */
+        width: 700px;
+        padding-left: 20px;
+        line-height: 50px;
+    }
+    .left-image{
+        height: 220px;
+        width: 400px;
+    }
+    .main-title{
+        font-size: 22px;
+    }
+    .main-value{
+        color: red;
+    }
+    .main-content{
+        line-height: 30px;
+        font-size: 16px;
+        color: #666;
+    }
+    .main-amount{
+        display: flex;
+    }
+    .main-amount-flex{
+        flex: 1;
+    }
+    .Search{
+        float: right;
+        padding-top: 20px;
+        padding-right: 50px;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+    }
+    form label, form input {
+    margin-bottom: 10px; /* Space between elements */
+  }
+  .content-form{
+    width: 300px;
+  }
+</style>
+<body>
+    <div>
+        <div class="top">
+            <img class="logo" src="./image/logo.png" alt="">
+        </div>
+        <div class="content">
+            <div class="content-form">
+                <form action="/search" method="get">
+                    <label for="name">标题：<input type="search" name="q" placeholder="输入名称..."></label>
+                    <label for="name">城市：<input type="search" name="q" placeholder="输入城市名称..."></label>
+                    <label for="name">状态：
+                    
+                    <input type="radio" name="gender" >进行中
+                    <input type="radio" name="gender" checked>已完成</label>
+    
+                    <input type="submit" value="搜索">
+                </form>
+            </div>
+     
+        </div>
+    </div>
+</body>
+
+<script>
+    function goSearch() {
+        
+    }
+</script>
+
+
+</html>
