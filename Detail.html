@@ -130,7 +130,7 @@
         <div class="top">
             <img class="logo" src="./image/logo.png" alt="">
             <div id="Search"  >
-                返回
+                GoBack
             </div>
         </div>
         <div class="content">
@@ -138,7 +138,7 @@
         </div>
         <div class="content2">
             <div class="text1">
-                介绍
+                Introduce
             </div>
         </div>
         <div class="content1">
@@ -202,21 +202,22 @@ function addContentData(data) {
                                        <div class="main-title" onclick=changeWraaper(${item.FUNDRAISER_ID})>${item.CAPTION}</div>
                     <div class="main-amount">
                         <div class="main-amount-flex">
-                            筹集金额：<span class="main-value">￥${item.TARGET_FUNDING}元</span>
+                            TARGET_FUNDING：<span class="main-value">￥${item.TARGET_FUNDING}元</span>
                         </div>
                     </div>
                     <div class="main-amount">
                         <div class="main-amount-flex">
-                            已筹金额：<span class="main-value"> ￥${item.CURRENT_FUNDING}元  </span>  
+                            CURRENT_FUNDING：<span class="main-value"> ￥${item.CURRENT_FUNDING}元  </span>  
                         </div>
                     </div>
                     <div>
-                        ${item.ACTIVE_CATEGORY_ID == 1? '进行中' : item.ACTIVE_CATEGORY_ID == 2? '已结束' : item.ACTIVE_CATEGORY_ID == 3? '已下架' : '未开始'}
+                    ${item.ACTIVE_CATEGORY_ID == 1? 'progress' : item.ACTIVE_CATEGORY_ID == 2? 'Ended' : item.ACTIVE_CATEGORY_ID == 3? 'Removed' : 'NotStarted'}
+
                     </div>
                     <div>
-                        组织者：${item.ORGANIZER}  城市：${item.CITY}
+                        ORGANIZER：${item.ORGANIZER}  CITY：${item.CITY}
                     </div>
-                    <button onclick=changeButton()>捐献</button>
+                    <button onclick=changeButton()>Donate</button>
                 </div>
                 </div>
             </div>
